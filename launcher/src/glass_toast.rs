@@ -95,6 +95,9 @@ impl Launcher {
                 .left(px(16.))
                 .right(px(16.))
                 .bottom(px(16.))
+                // As wide as what it says, in the middle.
+                .flex()
+                .justify_center()
                 .child(
                     toast
                         .px(px(16.))
