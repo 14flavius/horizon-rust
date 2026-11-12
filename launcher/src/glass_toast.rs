@@ -72,9 +72,11 @@ impl Launcher {
         })
     }
 
-    /// The toast along the bottom, on a narrower window (`xl:hidden`).
+    /// The toast along the bottom, on a narrower window (`xl:hidden`), and on any window while
+    /// the consent or owner screen covers the top bar: the root draws it above them.
     pub(super) fn toast_float(&self) -> Option<Div> {
-        if self.window_width >= 1280. {
+        let covered = self.asking_consent() || self.asking_owner();
+        if self.window_width >= 1280. && !covered {
             return None;
         }
         let (text, n) = current()?;
