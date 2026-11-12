@@ -5499,9 +5499,7 @@ impl Render for Launcher {
         if self.asking_owner() {
             root = root.child(self.owner_screen(cx));
         }
-        if t.glass {
-            root = root.children(self.toast_float());
-        }
+        root = root.children(self.toast_float());
         if let Some(opening) = &self.opening {
             // The wordmark arrives letter by letter, then gives way to the launcher; a click or
             // a key skips ahead.
